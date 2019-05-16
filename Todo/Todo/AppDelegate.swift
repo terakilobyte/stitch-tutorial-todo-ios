@@ -9,6 +9,8 @@
 import UIKit
 // import StitchCore
 import StitchCore
+// import StitchRemoteMongoDBService
+import StitchRemoteMongoDBService
 
 // set up the Stitch client
 let stitch = try! Stitch.initializeAppClient(withClientAppID: Constants.STITCH_APP_ID)
@@ -21,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let MongoClient = try! stitch.serviceClient(fromFactory: remoteMongoClientFactory, withName: Constants.ATLAS_SERVICE_NAME)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
