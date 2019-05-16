@@ -7,6 +7,11 @@
 //
 
 import UIKit
+// import StitchCore
+import StitchCore
+
+// set up the Stitch client
+let stitch = try! Stitch.initializeAppClient(withClientAppID: Constants.STITCH_APP_ID)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
