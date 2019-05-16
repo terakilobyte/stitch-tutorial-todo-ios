@@ -11,6 +11,7 @@
 		52B20BCC228D97A500B0A176 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B20BCB228D97A500B0A176 /* ViewController.swift */; };
 		52B20BD1228D97A700B0A176 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52B20BD0228D97A700B0A176 /* Assets.xcassets */; };
 		52B20BD4228D97A700B0A176 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B20BD2228D97A700B0A176 /* LaunchScreen.storyboard */; };
+		52B20BDC228D9F9800B0A176 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B20BDB228D9F9800B0A176 /* Constants.swift */; };
 		9981F70A102E80FB12D00186 /* Pods_Todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67851F8E4A123A57D2104880 /* Pods_Todo.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +23,7 @@
 		52B20BD0228D97A700B0A176 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52B20BD3228D97A700B0A176 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52B20BD5228D97A700B0A176 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52B20BDB228D9F9800B0A176 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		67851F8E4A123A57D2104880 /* Pods_Todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2D99313684A153EDC3F0182 /* Pods-Todo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo.debug.xcconfig"; path = "Target Support Files/Pods-Todo/Pods-Todo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				52B20BC9228D97A500B0A176 /* AppDelegate.swift */,
+				52B20BDB228D9F9800B0A176 /* Constants.swift */,
 				52B20BCB228D97A500B0A176 /* ViewController.swift */,
 				52B20BD0228D97A700B0A176 /* Assets.xcassets */,
 				52B20BD2228D97A700B0A176 /* LaunchScreen.storyboard */,
@@ -234,6 +237,7 @@
 			files = (
 				52B20BCC228D97A500B0A176 /* ViewController.swift in Sources */,
 				52B20BCA228D97A500B0A176 /* AppDelegate.swift in Sources */,
+				52B20BDC228D9F9800B0A176 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
