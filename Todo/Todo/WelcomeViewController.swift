@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MongoSwift
+import StitchCore
 
 class WelcomeViewController: UIViewController {
     override func viewDidLoad() {

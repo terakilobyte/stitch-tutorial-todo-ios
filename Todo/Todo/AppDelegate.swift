@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let MongoClient = try! stitch.serviceClient(fromFactory: remoteMongoClientFactory, withName: Constants.ATLAS_SERVICE_NAME)
 
         // set up remote mongo database and our collection handle
-        itemsCollection = MongoClient.db(name: Constants.TODO_DATABASE).collection(Constants.TODO_ITEMS_COLLECTION, withCollectionType: TodoItem.self)
+        itemsCollection = MongoClient.db(Constants.TODO_DATABASE).collection(Constants.TODO_ITEMS_COLLECTION, withCollectionType: TodoItem.self)
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
