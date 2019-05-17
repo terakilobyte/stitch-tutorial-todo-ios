@@ -2,7 +2,7 @@ import MongoSwift
 import UIKit
 
 class TodoTableViewController:
-UIViewController, UITableViewDataSource, UITableViewDelegate {
+    UIViewController, UITableViewDataSource, UITableViewDelegate {
     let tableView = UITableView() // Create our tableview
     
     private var userId: String? {
@@ -48,11 +48,28 @@ UIViewController, UITableViewDataSource, UITableViewDelegate {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add,
                                         target: self,
                                         action: #selector(self.addTodoItem(_:)))
-
+        let logoutButton = UIBarButtonItem(title: "Logout",
+                                           style: .plain,
+                                           target: self,
+                                           action: #selector(self.logout(_:)))
+       
         navigationItem.leftBarButtonItem = addButton
+        navigationItem.rightBarButtonItem = logoutButton
     }
     
-
+    @objc func logout(_ sender: Any) {
+        stitch.auth.logout { result in
+            switch result {
+            case .failure(let e):
+                print("Had an error logging out: \(e)")
+            case .success:
+                DispatchQueue.main.async {
+                    self.navigationController?.setViewControllers([WelcomeViewController()], animated: true)
+                }
+            }
+        }
+    }
+    
     @objc func addTodoItem(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Item", message: nil, preferredStyle: .alert)
         alertController.addTextField { textField in
