@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52AC865F228EE0B800BFB5A3 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC865E228EE0B800BFB5A3 /* TodoItem.swift */; };
 		52B20BCA228D97A500B0A176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B20BC9228D97A500B0A176 /* AppDelegate.swift */; };
 		52B20BCC228D97A500B0A176 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B20BCB228D97A500B0A176 /* ViewController.swift */; };
 		52B20BD1228D97A700B0A176 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52B20BD0228D97A700B0A176 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		4FC0359979FCD25014E83E83 /* Pods-Todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo.release.xcconfig"; path = "Target Support Files/Pods-Todo/Pods-Todo.release.xcconfig"; sourceTree = "<group>"; };
+		52AC865E228EE0B800BFB5A3 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		52B20BC6228D97A500B0A176 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B20BC9228D97A500B0A176 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52B20BCB228D97A500B0A176 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				52B20BC9228D97A500B0A176 /* AppDelegate.swift */,
+				52AC865E228EE0B800BFB5A3 /* TodoItem.swift */,
 				52B20BDB228D9F9800B0A176 /* Constants.swift */,
 				52B20BCB228D97A500B0A176 /* ViewController.swift */,
 				52B20BD0228D97A700B0A176 /* Assets.xcassets */,
@@ -237,6 +240,7 @@
 			files = (
 				52B20BCC228D97A500B0A176 /* ViewController.swift in Sources */,
 				52B20BCA228D97A500B0A176 /* AppDelegate.swift in Sources */,
+				52AC865F228EE0B800BFB5A3 /* TodoItem.swift in Sources */,
 				52B20BDC228D9F9800B0A176 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
