@@ -15,17 +15,21 @@ import StitchRemoteMongoDBService
 // set up the Stitch client
 let stitch = try! Stitch.initializeAppClient(withClientAppID: Constants.STITCH_APP_ID)
 
+var itemsCollection: RemoteMongoCollection<TodoItem>!
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
+        // set up remote mongo client
         let MongoClient = try! stitch.serviceClient(fromFactory: remoteMongoClientFactory, withName: Constants.ATLAS_SERVICE_NAME)
-        
+
+        // set up remote mongo database and our collection handle
+        itemsCollection = MongoClient.db(name: Constants.TODO_DATABASE).collection(Constants.TODO_ITEMS_COLLECTION, withCollectionType: TodoItem.self)
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
@@ -53,7 +57,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-
