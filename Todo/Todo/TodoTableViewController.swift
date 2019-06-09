@@ -1,5 +1,6 @@
 import MongoSwift
 import UIKit
+import GoogleSignIn
 
 class TodoTableViewController:
     UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -29,7 +30,7 @@ class TodoTableViewController:
             }
         } else {
             // no user is logged in, send them back to the welcome view
-            self.navigationController?.setViewControllers([WelcomeViewController()], animated: true)
+            self.navigationController?.setViewControllers([WelcomeViewController()], animated: false)
         }
     }
     
@@ -58,13 +59,16 @@ class TodoTableViewController:
     }
     
     @objc func logout(_ sender: Any) {
+        if stitch.auth.currentUser?.loggedInProviderType == .some(.google) {
+            GIDSignIn.sharedInstance()?.signOut()
+        }
         stitch.auth.logout { result in
             switch result {
             case .failure(let e):
                 print("Had an error logging out: \(e)")
             case .success:
                 DispatchQueue.main.async {
-                    self.navigationController?.setViewControllers([WelcomeViewController()], animated: true)
+                    self.navigationController?.setViewControllers([WelcomeViewController()], animated: false)
                 }
             }
         }

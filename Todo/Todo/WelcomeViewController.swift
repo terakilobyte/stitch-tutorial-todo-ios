@@ -9,33 +9,57 @@
 import UIKit
 import MongoSwift
 import StitchCore
+import GoogleSignIn
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        
         title = "Welcome"
+        // add self as observer to NotificationCenter
+        NotificationCenter.default.addObserver(self, selector: #selector(didSignInWithOauth), name: NSNotification.Name("OAUTH_SIGN_IN"), object: nil)
+        // Do any additional setup after loading the view.
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        
         if stitch.auth.isLoggedIn {
             self.navigationController?.pushViewController(TodoTableViewController(), animated: true)
         } else {
-            let alertController = UIAlertController(title: "Login to Stitch", message: "Anonymous Login", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Login", style: .default, handler: { [unowned self] _ -> Void in
-                stitch.auth.login(withCredential: AnonymousCredential()) { [weak self] result in
-                    switch result {
-                    case .failure(let e):
-                        fatalError(e.localizedDescription)
-                    case .success:
-                        DispatchQueue.main.async {
-                            self?.navigationController?.pushViewController(TodoTableViewController(), animated: true)
-                        }
-                    }
-                }
-            }))
-            self.present(alertController, animated: true, completion: nil)
+            
+            let anonymousButton = UIButton(frame: CGRect(x: self.view.frame.width / 2 - 150, y: 100, width: 300, height: 50))
+            anonymousButton.backgroundColor = .green
+            anonymousButton.setTitle("Login Anonymously", for: .normal)
+            anonymousButton.addTarget(self, action: #selector(didClickAnonymousLogin), for: .touchUpInside)
+            
+            let googleButton = GIDSignInButton(frame: CGRect(x: self.view.frame.width / 2 - 150, y: 200, width: 300, height: 50))
+            
+            self.view.addSubview(anonymousButton)
+            self.view.addSubview(googleButton)
+            
         }
     }
+
+    
+    @objc func didClickAnonymousLogin(_ sender: Any) {
+        stitch.auth.login(withCredential: AnonymousCredential()) { [weak self] result in
+            switch result {
+            case .failure(let e):
+                fatalError(e.localizedDescription)
+            case .success:
+                DispatchQueue.main.async {
+                    self?.navigationController?.pushViewController(TodoTableViewController(), animated: true)
+                }
+            }
+        }
+    }
+    
+    @objc func didSignInWithOauth() {
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(TodoTableViewController(), animated: true)
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 }

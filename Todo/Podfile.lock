@@ -1,4 +1,17 @@
 PODS:
+  - GoogleSignIn (4.4.0):
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.2.1):
+    - GoogleToolboxForMac/Defines (= 2.2.1)
+  - GoogleToolboxForMac/Defines (2.2.1)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.2.1)":
+    - GoogleToolboxForMac/DebugUtils (= 2.2.1)
+    - GoogleToolboxForMac/Defines (= 2.2.1)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.1)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.2.1)"
+  - GTMSessionFetcher/Core (1.2.2)
   - mongo-embedded-c-driver (1.13.0-4.0.4)
   - mongo_embedded (4.0.4)
   - mongoc_embedded (4.0.4):
@@ -10,31 +23,35 @@ PODS:
     - MongoSwift (~> 0.1.0)
   - MongoSwift (0.1.0):
     - mongo-embedded-c-driver (~> 1.13.0-4.0.0)
-  - StitchCore (6.0.0):
-    - StitchCoreSDK (= 6.0.0)
-  - StitchCoreLocalMongoDBService (6.0.0):
+  - StitchCore (6.0.1):
+    - StitchCoreSDK (= 6.0.1)
+  - StitchCoreLocalMongoDBService (6.0.1):
     - MongoMobile (= 0.1.0)
-    - StitchCoreSDK (= 6.0.0)
-  - StitchCoreRemoteMongoDBService (6.0.0):
-    - StitchCoreLocalMongoDBService (= 6.0.0)
-    - StitchCoreSDK (= 6.0.0)
-  - StitchCoreSDK (6.0.0):
+    - StitchCoreSDK (= 6.0.1)
+  - StitchCoreRemoteMongoDBService (6.0.1):
+    - StitchCoreLocalMongoDBService (= 6.0.1)
+    - StitchCoreSDK (= 6.0.1)
+  - StitchCoreSDK (6.0.1):
     - MongoSwift (= 0.1.0)
-  - StitchRemoteMongoDBService (6.0.0):
-    - StitchCore (= 6.0.0)
-    - StitchCoreRemoteMongoDBService (= 6.0.0)
-  - StitchSDK (6.0.0):
-    - StitchSDK/StitchSDK (= 6.0.0)
-  - StitchSDK/StitchRemoteMongoDBService (6.0.0):
-    - StitchRemoteMongoDBService (= 6.0.0)
-  - StitchSDK/StitchSDK (6.0.0):
+  - StitchRemoteMongoDBService (6.0.1):
+    - StitchCore (= 6.0.1)
+    - StitchCoreRemoteMongoDBService (= 6.0.1)
+  - StitchSDK (6.0.1):
+    - StitchSDK/StitchSDK (= 6.0.1)
+  - StitchSDK/StitchRemoteMongoDBService (6.0.1):
+    - StitchRemoteMongoDBService (= 6.0.1)
+  - StitchSDK/StitchSDK (6.0.1):
     - StitchSDK/StitchRemoteMongoDBService
 
 DEPENDENCIES:
-  - StitchSDK (~> 6.0.0)
+  - GoogleSignIn
+  - StitchSDK (= 6.0.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - GoogleSignIn
+    - GoogleToolboxForMac
+    - GTMSessionFetcher
     - mongo-embedded-c-driver
     - mongo_embedded
     - mongoc_embedded
@@ -48,18 +65,21 @@ SPEC REPOS:
     - StitchSDK
 
 SPEC CHECKSUMS:
+  GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
+  GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
+  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   mongo-embedded-c-driver: b46360baa15fc142baae80628822f26663220bde
   mongo_embedded: e413134eb6b60544e7278add03007f8fe384a00c
   mongoc_embedded: 41aadbb756b07070d6f0471192a84750cb42c580
   MongoMobile: 988e8d2fd322761d6358570dde8a2b3d44801823
   MongoSwift: e20f86eae1beb06bbba49c2d73bb570961cc4c85
-  StitchCore: 6e51c5ae902c3104e702051079c008bb6ad932bd
-  StitchCoreLocalMongoDBService: 73b323302bb99083af8cd4575e9f8e076a42af91
-  StitchCoreRemoteMongoDBService: 725132e898507cca0a5f771391eaf6ab0b99a11c
-  StitchCoreSDK: dbdc54b237b764c36d4440c828131820d1fc6428
-  StitchRemoteMongoDBService: f1578c76ab56566dc4ce9be1685cbb91075ead4a
-  StitchSDK: a606b89ac83976050c228e94ce8833c83ac576c1
+  StitchCore: 9e5c62bb7069254af142e0ef18aae8a484e1b6d8
+  StitchCoreLocalMongoDBService: e085bee742eecaf9d30a8999fdf9f5e814856c8b
+  StitchCoreRemoteMongoDBService: 54db4d87f05146784294ed3f5c953bdf7eef4a40
+  StitchCoreSDK: 3d50f074d322ee1d1b087d319e6b3ccb7b892f26
+  StitchRemoteMongoDBService: e31d88bb2e8ad451f0929bd64062601852dfdc24
+  StitchSDK: 871fd2d6e1b6a0652e40ad7aa5007c925e47cecc
 
-PODFILE CHECKSUM: 093b27653bcd4f7854b694b2dd19ff982d38a305
+PODFILE CHECKSUM: fa72aae0e3c7ebea32caf414139697793becaf52
 
 COCOAPODS: 1.6.1
