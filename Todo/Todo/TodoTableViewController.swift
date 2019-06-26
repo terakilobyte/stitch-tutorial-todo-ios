@@ -1,16 +1,17 @@
 import MongoSwift
 import UIKit
+import FBSDKLoginKit
 
 class TodoTableViewController:
     UIViewController, UITableViewDataSource, UITableViewDelegate {
     let tableView = UITableView() // Create our tableview
-    
+
     private var userId: String? {
         return stitch.auth.currentUser?.id
     }
-    
+
     fileprivate var todoItems = [TodoItem]() // our table view data source
-    
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
         // check to make sure a user is logged in
@@ -32,11 +33,11 @@ class TodoTableViewController:
             self.navigationController?.setViewControllers([WelcomeViewController()], animated: true)
         }
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Your To-Do List"
@@ -44,7 +45,7 @@ class TodoTableViewController:
         self.tableView.delegate = self
         view.addSubview(self.tableView)
         self.tableView.frame = self.view.frame
-        
+
         let addButton = UIBarButtonItem(barButtonSystemItem: .add,
                                         target: self,
                                         action: #selector(self.addTodoItem(_:)))
@@ -52,12 +53,16 @@ class TodoTableViewController:
                                            style: .plain,
                                            target: self,
                                            action: #selector(self.logout(_:)))
-       
+
         navigationItem.leftBarButtonItem = addButton
         navigationItem.rightBarButtonItem = logoutButton
     }
-    
+
     @objc func logout(_ sender: Any) {
+
+        if stitch.auth.currentUser?.loggedInProviderType == .some(.facebook) {
+            LoginManager().logOut()
+        }
         stitch.auth.logout { result in
             switch result {
             case .failure(let e):
@@ -69,7 +74,7 @@ class TodoTableViewController:
             }
         }
     }
-    
+
     @objc func addTodoItem(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Item", message: nil, preferredStyle: .alert)
         alertController.addTextField { textField in
@@ -103,12 +108,12 @@ class TodoTableViewController:
         }))
         self.present(alertController, animated: true)
     }
-    
+
     func tableView(_ tableView: UITableView,
                    shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return false
     }
-    
+
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         var item = self.todoItems[indexPath.row]
         let title = item.checked ? NSLocalizedString("Undone", comment: "Undone") : NSLocalizedString("Done", comment: "Done")
@@ -120,12 +125,12 @@ class TodoTableViewController:
                 completionHander(true)
             }
         })
-        
+
         action.backgroundColor = item.checked ? .red : .green
         let configuration = UISwipeActionsConfiguration(actions: [action])
         return configuration
     }
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard case .delete = editingStyle else { return }
         let item = todoItems[indexPath.row]
@@ -141,11 +146,11 @@ class TodoTableViewController:
             }
         }
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.todoItems.count
     }
-    
+
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell") ?? UITableViewCell(style: .default, reuseIdentifier: "TodoCell")
